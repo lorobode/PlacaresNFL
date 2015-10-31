@@ -1,25 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DWa-cG-TQ9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Games View Controller-->
+        <scene sceneID="OoO-zL-p3t">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DWa-cG-TQ9" customClass="W1GamesViewController" customModule="PlacaresNFL" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="VTG-Yb-Nol"/>
+                        <viewControllerLayoutGuide type="bottom" id="WFC-zM-vKE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="uD2-BY-qYg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4FN-fu-RXb" customClass="Matc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchCell" id="qbN-zf-Ihx" customClass="MatchTableViewCell" customModule="PlacaresNFL" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qbN-zf-Ihx" id="RDf-Ej-Wed">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krR-nV-pwf">
+                                                    <rect key="frame" x="8" y="12" width="49" height="20.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsS-lD-h3W">
+                                                    <rect key="frame" x="65" y="12" width="52" height="20.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahC-Ie-cT2">
+                                                    <rect key="frame" x="469" y="11" width="52" height="20.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFM-St-Mdr">
+                                                    <rect key="frame" x="529.5" y="11" width="54.5" height="20.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="leading" secondItem="ahC-Ie-cT2" secondAttribute="trailing" constant="8" id="2tl-SD-vh5"/>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="leading" secondItem="ahC-Ie-cT2" secondAttribute="trailing" constant="8" id="8f6-91-8dC"/>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="leading" secondItem="ahC-Ie-cT2" secondAttribute="trailing" constant="8" id="9au-HE-7Bk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jFM-St-Mdr" secondAttribute="trailing" constant="8" id="C3q-LB-D7f"/>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="En1-2Q-wVQ"/>
+                                                <constraint firstItem="ahC-Ie-cT2" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="F9N-fW-l40"/>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="YCt-ku-v6V"/>
+                                                <constraint firstItem="ahC-Ie-cT2" firstAttribute="leading" secondItem="PsS-lD-h3W" secondAttribute="trailing" constant="8" id="aOo-Hp-05K"/>
+                                                <constraint firstItem="PsS-lD-h3W" firstAttribute="leading" secondItem="krR-nV-pwf" secondAttribute="trailing" constant="8" id="cB3-YO-qMn"/>
+                                                <constraint firstItem="ahC-Ie-cT2" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="hCs-8B-wEx"/>
+                                                <constraint firstItem="PsS-lD-h3W" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="j2k-bU-kNu"/>
+                                                <constraint firstItem="jFM-St-Mdr" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="jlv-AG-Lix"/>
+                                                <constraint firstItem="ahC-Ie-cT2" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="o10-uO-jCa"/>
+                                                <constraint firstItem="krR-nV-pwf" firstAttribute="centerY" secondItem="RDf-Ej-Wed" secondAttribute="centerY" id="pXp-DV-YUN"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="krR-nV-pwf" secondAttribute="leading" id="r9J-Bi-TZT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jFM-St-Mdr" secondAttribute="trailing" id="vMx-yg-zaP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jFM-St-Mdr" secondAttribute="trailing" constant="8" id="xa8-C7-faz"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="F9N-fW-l40"/>
+                                                    <exclude reference="aOo-Hp-05K"/>
+                                                    <exclude reference="o10-uO-jCa"/>
+                                                    <exclude reference="2tl-SD-vh5"/>
+                                                    <exclude reference="8f6-91-8dC"/>
+                                                    <exclude reference="C3q-LB-D7f"/>
+                                                    <exclude reference="En1-2Q-wVQ"/>
+                                                    <exclude reference="jlv-AG-Lix"/>
+                                                    <exclude reference="vMx-yg-zaP"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="score1" destination="PsS-lD-h3W" id="vcU-0N-9O4"/>
+                                            <outlet property="score2" destination="ahC-Ie-cT2" id="Qg2-Sb-25y"/>
+                                            <outlet property="team1" destination="krR-nV-pwf" id="HAP-gc-J00"/>
+                                            <outlet property="team2" destination="jFM-St-Mdr" id="aHM-aT-7Bq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DWa-cG-TQ9" id="GSB-Ir-lN2"/>
+                                    <outlet property="delegate" destination="DWa-cG-TQ9" id="0IH-kO-WBT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WFC-zM-vKE" firstAttribute="top" secondItem="4FN-fu-RXb" secondAttribute="bottom" id="ARf-Y5-bfx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4FN-fu-RXb" secondAttribute="trailing" constant="-20" id="AzB-Ri-EMI"/>
+                            <constraint firstItem="4FN-fu-RXb" firstAttribute="top" secondItem="VTG-Yb-Nol" secondAttribute="bottom" id="PHB-CQ-Umb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="4FN-fu-RXb" secondAttribute="leading" constant="20" id="ifr-B9-7Yc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gamesTV" destination="4FN-fu-RXb" id="tok-sX-dZ2"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wz9-qI-pT6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="294" y="150"/>
         </scene>
     </scenes>
 </document>
