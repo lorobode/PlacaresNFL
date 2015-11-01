@@ -10,6 +10,7 @@ import UIKit
 
 class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewDataSource, UITableViewDelegate {
     
+    var week:Int = 1
     var games = [String]()
     var teams = [Any]()
     var parser = NSXMLParser()
@@ -19,7 +20,7 @@ class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        parser = NSXMLParser(contentsOfURL: NSURL(string: "http://football.myfantasyleague.com/2015/export?TYPE=nflSchedule&W=1")!)!
+        parser = NSXMLParser(contentsOfURL: NSURL(string: "http://football.myfantasyleague.com/2015/export?TYPE=nflSchedule&W=\(week)")!)!
         parser.delegate = self
         parser.parse()
     }
@@ -38,15 +39,11 @@ class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewD
             for (att, value) in attributeDict{
                 if att == "id" {
                     team = value
+                    teams.append([team, score])
                 }
                 if att == "score" {
                     score = value
-                }
-                if team != "" && score != "" {
-                    teams.append([team, score])
-                    return
-                }
-            }
+                }            }
         }
     }
     
