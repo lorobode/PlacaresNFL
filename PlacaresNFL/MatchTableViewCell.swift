@@ -14,12 +14,15 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet var score1: UILabel!
     @IBOutlet var team2: UILabel!
     @IBOutlet var score2: UILabel!
+    @IBOutlet var logo1: UIImageView!
+    @IBOutlet var logo2: UIImageView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    @IBOutlet var gameTime: UILabel!
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

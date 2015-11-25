@@ -10,22 +10,28 @@
 		A1191E9C1BE5537300637697 /* W1GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1191E9B1BE5537300637697 /* W1GamesViewController.swift */; };
 		A1191E9E1BE55B1F00637697 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1191E9D1BE55B1F00637697 /* MatchTableViewCell.swift */; };
 		A1191EA01BE6410900637697 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1191E9F1BE6410900637697 /* FirstViewController.swift */; };
+		A14CA17F1BF5711C00D4D938 /* PlacaresNFL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A14CA17D1BF5711C00D4D938 /* PlacaresNFL.xcdatamodeld */; };
+		A14CA1821BF572EF00D4D938 /* Games+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CA1801BF572EF00D4D938 /* Games+CoreDataProperties.swift */; };
+		A14CA1831BF572EF00D4D938 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CA1811BF572EF00D4D938 /* Games.swift */; };
 		A1F7039F1BD9C83100823833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F7039E1BD9C83100823833 /* AppDelegate.swift */; };
 		A1F703A41BD9C83100823833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F703A21BD9C83100823833 /* Main.storyboard */; };
-		A1F703A61BD9C83100823833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F703A51BD9C83100823833 /* Assets.xcassets */; };
 		A1F703A91BD9C83100823833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F703A71BD9C83100823833 /* LaunchScreen.storyboard */; };
+		A1F7BAFA1BE6D2BD001F0D68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F7BAF91BE6D2BD001F0D68 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A1191E9B1BE5537300637697 /* W1GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W1GamesViewController.swift; sourceTree = "<group>"; };
 		A1191E9D1BE55B1F00637697 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		A1191E9F1BE6410900637697 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		A14CA17E1BF5711C00D4D938 /* PlacaresNFL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlacaresNFL.xcdatamodel; sourceTree = "<group>"; };
+		A14CA1801BF572EF00D4D938 /* Games+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Games+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A14CA1811BF572EF00D4D938 /* Games.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		A1F7039B1BD9C83100823833 /* PlacaresNFL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacaresNFL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1F7039E1BD9C83100823833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1F703A31BD9C83100823833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A1F703A51BD9C83100823833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1F703A81BD9C83100823833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F703AA1BD9C83100823833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1F7BAF91BE6D2BD001F0D68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +64,17 @@
 		A1F7039D1BD9C83100823833 /* PlacaresNFL */ = {
 			isa = PBXGroup;
 			children = (
+				A1F7BAF91BE6D2BD001F0D68 /* Assets.xcassets */,
 				A1F7039E1BD9C83100823833 /* AppDelegate.swift */,
 				A1F703A21BD9C83100823833 /* Main.storyboard */,
-				A1F703A51BD9C83100823833 /* Assets.xcassets */,
 				A1F703A71BD9C83100823833 /* LaunchScreen.storyboard */,
 				A1F703AA1BD9C83100823833 /* Info.plist */,
 				A1191E9B1BE5537300637697 /* W1GamesViewController.swift */,
 				A1191E9D1BE55B1F00637697 /* MatchTableViewCell.swift */,
 				A1191E9F1BE6410900637697 /* FirstViewController.swift */,
+				A14CA17D1BF5711C00D4D938 /* PlacaresNFL.xcdatamodeld */,
+				A14CA1801BF572EF00D4D938 /* Games+CoreDataProperties.swift */,
+				A14CA1811BF572EF00D4D938 /* Games.swift */,
 			);
 			path = PlacaresNFL;
 			sourceTree = "<group>";
@@ -129,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1F703A91BD9C83100823833 /* LaunchScreen.storyboard in Resources */,
-				A1F703A61BD9C83100823833 /* Assets.xcassets in Resources */,
+				A1F7BAFA1BE6D2BD001F0D68 /* Assets.xcassets in Resources */,
 				A1F703A41BD9C83100823833 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +153,10 @@
 				A1F7039F1BD9C83100823833 /* AppDelegate.swift in Sources */,
 				A1191E9E1BE55B1F00637697 /* MatchTableViewCell.swift in Sources */,
 				A1191E9C1BE5537300637697 /* W1GamesViewController.swift in Sources */,
+				A14CA1831BF572EF00D4D938 /* Games.swift in Sources */,
 				A1191EA01BE6410900637697 /* FirstViewController.swift in Sources */,
+				A14CA17F1BF5711C00D4D938 /* PlacaresNFL.xcdatamodeld in Sources */,
+				A14CA1821BF572EF00D4D938 /* Games+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +307,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A14CA17D1BF5711C00D4D938 /* PlacaresNFL.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A14CA17E1BF5711C00D4D938 /* PlacaresNFL.xcdatamodel */,
+			);
+			currentVersion = A14CA17E1BF5711C00D4D938 /* PlacaresNFL.xcdatamodel */;
+			path = PlacaresNFL.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A1F703931BD9C83000823833 /* Project object */;
 }

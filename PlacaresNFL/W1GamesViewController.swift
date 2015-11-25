@@ -11,18 +11,23 @@ import UIKit
 class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewDataSource, UITableViewDelegate {
     
     var week:Int = 1
-    var games = [String]()
+    var games = [Any]()
     var teams = [Any]()
     var parser = NSXMLParser()
+    var hasRefreshControl = false
+    var refreshControl:UIRefreshControl!
     @IBOutlet var gamesTV: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        parser = NSXMLParser(contentsOfURL: NSURL(string: "http://football.myfantasyleague.com/2015/export?TYPE=nflSchedule&W=\(week)")!)!
-        parser.delegate = self
-        parser.parse()
+        self.gamesTV.backgroundColor = UIColor(red:0.13, green:0.13, blue:0.13, alpha:1.0);
+        self.title = "Semana \(week)"
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        loadData()
     }
 
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
@@ -30,9 +35,23 @@ class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewD
         
         if elementName == "matchup"{
             let matchup = attributeDict["kickoff"]
-            games.append(matchup!)
+            let date = NSDate(timeIntervalSince1970: Double(matchup!)!)
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "E dd/MM hh:mm" //format style. Browse online to get a format that fits your needs.
+            let dateString = dateFormatter.stringFromDate(date)
+            let time = attributeDict["gameSecondsRemaining"]
             
-        }
+            if Int(time!) == 0{
+                games.append([dateString, "0"])
+            } else {
+                //It means that this week has at least one game running or to start. So we want to add pull to refresh
+                addRefreshControl()
+                if Int(time!) > 0 {
+                    games.append([dateString, "1"])
+                } else if Int(time!) == 3600 {
+                    games.append([dateString, "2"])
+                }
+            }        }
         if elementName == "team" {
             var team = ""
             var score = ""
@@ -43,7 +62,8 @@ class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewD
                 }
                 if att == "score" {
                     score = value
-                }            }
+                }
+            }
         }
     }
     
@@ -66,60 +86,67 @@ class W1GamesViewController: UIViewController, NSXMLParserDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MatchCell", forIndexPath: indexPath) as! MatchTableViewCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.backgroundColor = UIColor(red:0.13, green:0.13, blue:0.13, alpha:1.0);
+        
+        cell.logo1.image = UIImage(named: (teams[indexPath.row*2] as! [String])[0])
         cell.team1.text = (teams[indexPath.row*2] as! [String])[0]
         cell.score1.text = (teams[indexPath.row*2] as! [String])[1]
+        cell.score1.font = UIFont.systemFontOfSize(13.0)
+        cell.score1.textColor = UIColor.whiteColor()
+        
+        cell.logo2.image = UIImage(named: (teams[indexPath.row*2 + 1] as! [String])[0])
         cell.team2.text = (teams[indexPath.row*2 + 1] as! [String])[0]
         cell.score2.text = (teams[indexPath.row*2 + 1] as! [String])[1]
+        cell.score2.font = UIFont.systemFontOfSize(13.0)
+        cell.score2.textColor = UIColor.whiteColor()
         
-        // Configure the cell...
+        let gameStatus = (games[indexPath.row] as! [String])
+        cell.gameTime.text = gameStatus[0]
+        
+        if gameStatus[1] == "0" {
+            if Int(cell.score1.text!) > Int(cell.score2.text!) {
+                cell.score1.font = UIFont.boldSystemFontOfSize(18.0)
+                cell.score1.textColor = UIColor.whiteColor()
+                cell.score2.textColor = UIColor.grayColor()
+            } else {
+                cell.score2.font = UIFont.boldSystemFontOfSize(18.0)
+                cell.score2.textColor = UIColor.whiteColor()
+                cell.score1.textColor = UIColor.grayColor()
+            }
+            cell.gameTime.text = gameStatus[0].characters.split{$0 == " "}.map(String.init)[1]
+        } else if gameStatus[1] == "1" {
+        } else if gameStatus[1] == "2"{
+        }
 
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func loadData(){
+        games = []
+        teams = []
+        parser = NSXMLParser(contentsOfURL: NSURL(string: "http://football.myfantasyleague.com/2015/export?TYPE=nflSchedule&W=\(week)")!)!
+        parser.delegate = self
+        parser.parse()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    func addRefreshControl(){
+        if(!hasRefreshControl){
+            self.refreshControl = UIRefreshControl()
+            self.refreshControl.attributedTitle = NSAttributedString(string: "Puxe para recarregar", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+            self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+            self.gamesTV.addSubview(refreshControl)
+            hasRefreshControl = true
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func refresh(sender:AnyObject)
+    {
+        loadData()
+        self.refreshControl.endRefreshing()
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
